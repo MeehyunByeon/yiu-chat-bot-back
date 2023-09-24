@@ -1,4 +1,4 @@
-from data import *
+from data_230924 import *
 import sys
 import json
 import codecs
@@ -33,7 +33,7 @@ for index_number in range(len(nouns_list)):
                 code_list.pop(-1)
             if code_list and nouns_list[index_number] in code_list[-1]: # 요소 중복에 따른 (현재, 미래)
                 continue
-            code_list.append(combine_string)
+            code_list.append(exist_code[combine_string])
             
 if code_list:
     last_element = code_list[-1]
