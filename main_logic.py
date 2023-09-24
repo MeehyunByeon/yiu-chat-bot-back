@@ -5,6 +5,7 @@ import codecs
 
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer)
 input_string = sys.argv[1]
+input_string = input_string.upper()
 # input_string = "휴학 중인데 복학신청하고 싶어 그리고 버스 시간표 알려줘"
 
 nouns_list = []
