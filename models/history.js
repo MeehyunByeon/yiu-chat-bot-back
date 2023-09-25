@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) =>{
             type: Sequelize.STRING,
             allowNull: false,
         },
+        check : {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
         createdAt: {
             type: Sequelize.DATE,
             defaultValue: sequelize.literal('now()')

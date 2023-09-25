@@ -100,16 +100,22 @@ app.post('/question', async (req, res) => {
             const Json = {who: "bot", code: fCode, top : tempT , mid : tempM , bot : tempB};
             const result = await History.create({
                 question: input_string,
-                code: fCode
+                code: fCode,
+                check: 1
             });
             return res.status(200).json(Json);
         }catch (err){
             console.error("에러");
-            return res.status(404).send("데이터 베이스 연결 에러");
+            const result = await History.create({
+                question: input_string,
+                code: kCode,
+                check: 0
+            });
+            return res.status(404).send("파이썬 코드 연결 에러");
         }
     }catch (err){
         console.error("에러");
-        return res.status(500).send("파이썬 코드 연결 에러");
+        return res.status(500).send(" 데이터 베이스 연결 에러");
     }
 });
 app.post('/ask', async (req, res) => {
@@ -173,7 +179,8 @@ app.post('/code', async (req, res) => {
         const Json = {who: "bot", code: fCode,top : tempT , mid : tempM , bot : tempB};
         const result = await History.create({
             question: question,
-            code: fCode
+            code: fCode,
+            check: 1
         });
         return res.status(200).json(Json);
     }catch (err){
